@@ -21,6 +21,7 @@
 			String nome					= m.getNome();
 			String cpf					= m.getCpf();
 			String crm					= m.getCrm();
+			LocalDate nascimento		= m.getNascimento();
 			String especialidade		= m.getEspecialidade();
 			String genero 				= m.getGenero();
 			String telefone 			= m.getTelefone();
@@ -37,6 +38,7 @@
 					"<td class='Dados'>"		+ nome				+ 	"</td>"				+
 					"<td class='Dados'>"		+ cpf				+ 	"</td>"				+
 					"<td class='Dados'>"		+ crm				+ 	"</td>"				+
+					"<td class='Dados'>"		+ nascimento		+ 	"</td>"				+
 					"<td class='Dados'>"		+ especialidade		+ 	"</td>"				+		
 				
 					"<td class='Dados'>"		+ genero			+ 	"</td>"				+
@@ -205,9 +207,11 @@
 							
 								<thead>
 									<tr>
+								    	<th class="col-id"> 		 id</th>
 										<th class="col-nome">		Nome</th>
 										<th class="col-cpf">		CPF</th>  
 										<th class="col-genero">		CRM</th>
+										<th class="col-telefone">	Nascimento</th>
 										<th class="col-telefone">	Especialidade</th>
 			
 													 

@@ -27,10 +27,16 @@ public static ArrayList<Medico>getMedicos(){
 							lista.add(new Medico(
 									 result.getInt("id"),
 									 result.getString("nome"),
-									 result.getString("cpf")
-								 
-									 )
-						);
+									 result.getString("cpf"),
+									 result.getString("crm"),
+									 result.getDate("nascimento").toLocalDate(),
+									 result.getString("genero"),
+									 result.getString("especialidade"),
+									 result.getString("telefone"),
+									 result.getString("email"),
+									 result.getString("endereco")		
+									 			)
+									);
 			}
 			
 			st.close();

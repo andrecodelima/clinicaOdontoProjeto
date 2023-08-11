@@ -21,6 +21,7 @@
 			String nome					= p.getNome();
 			String cpf					= p.getCpf();
 			String genero 				= p.getGenero();
+			LocalDate nascimento		= p.getNascimento();
 			String telefone 			= p.getTelefone();
 			String email 				= p.getEmail();
 			
@@ -31,6 +32,7 @@
 					"<td class='Dados'>"		+ nome				+ 	"</td>"		+
 					"<td class='Dados'>"		+ cpf				+ 	"</td>"		+
 					"<td class='Dados'>"		+ genero			+ 	"</td>"		+
+					"<td class='Dados'>"		+ nascimento			+ 	"</td>"				+
 					"<td class='Dados'>"		+ telefone			+ 	"</td>"		+
 					"<td class='Dados'>"		+ email				+ 	"</td>"		+
 
@@ -195,12 +197,14 @@
 							
 								<thead>
 									<tr>
-										<th class="col-nome">		Nome</th>
-										<th class="col-cpf">		CPF</th>  
-										<th class="col-genero">		Gênero</th>
-										<th class="col-telefone">	Telefone</th>
-										<th class="col-email">		E-mail</th>
-										<th class="col-endereço">	Endereço</th>
+										<th class="col-id"> 		 id</th>
+										<th class="col-nome">		 Nome</th>
+										<th class="col-cpf">		 CPF</th>  
+										<th class="col-genero">		 Gênero</th>
+										<th class="col-nascimento">	 Nascimento</th>
+										<th class="col-telefone">	 Telefone</th>
+										<th class="col-email">		 E-mail</th>
+										<th class="col-endereço">	 Endereço</th>
 										
 										 
 									</tr>

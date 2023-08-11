@@ -19,7 +19,7 @@ public class Medico {
 	@Column(length = 100)
 	private String nome;
 	
-	@Column(length = 15)
+	@Column(length = 20)
 	private String cpf;
 	
 	@Column(length = 15)
@@ -42,12 +42,31 @@ public class Medico {
 	
 	@Column(length = 200)
 	private String endereco;
+	
 	public Medico(int id, String nome, String cpf) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 	}
+	
+	
+	public Medico(int id, String nome, String cpf, String crm, LocalDate nascimento, String genero,
+			String especialidade, String telefone, String email, String endereco) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.crm = crm;
+		this.nascimento = nascimento;
+		this.genero = genero;
+		this.especialidade = especialidade;
+		this.telefone = telefone;
+		this.email = email;
+		this.endereco = endereco;
+	}
+
+
 	public int getId() {
 		return id;
 	}

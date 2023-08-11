@@ -26,8 +26,13 @@ public static ArrayList<Paciente>getPaciente(){
 							lista.add(new Paciente(
 									 result.getInt("id"),
 									 result.getString("nome"),
-									 result.getString("cpf")
-								 
+									 result.getString("cpf"),
+									 result.getString("genero"),
+									 result.getDate("nascimento").toLocalDate(),
+									 result.getString("telefone"),
+									 result.getString("email"),
+									 result.getString("endereco")	
+
 									 )
 						);
 			}
