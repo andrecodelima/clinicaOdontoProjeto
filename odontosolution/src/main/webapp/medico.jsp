@@ -7,7 +7,7 @@
 <%@page import="com.clinica.odontosolution.model.Medico"%>
 <%@page import="com.clinica.odontosolution.services.MedicoServices"%>
 <%
-	ArrayList<Medico> lista = MedicoServices.getMedicos(); 
+	ArrayList<Medico> lista = MedicoServices.getAllMedicos(); 
 	String line = "";
 	
 	if(lista.isEmpty()){

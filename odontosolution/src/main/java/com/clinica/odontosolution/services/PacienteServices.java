@@ -1,15 +1,49 @@
 package com.clinica.odontosolution.services;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.clinica.odontosolution.model.Paciente;
 
 public class PacienteServices {
 
-public static ArrayList<Paciente>getPaciente(){
+public static boolean insert(Paciente paciente) {
+		
+		Connection conn = Db.conect();
+		LocalDate dataNascimento = paciente.getNascimento();
+		try {
+			
+			String sql = "INSERT INTO pacientes(nome, cpf, nascimento, genero, telefone, email, endereco) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement st = conn.prepareStatement(sql);
+			
+			st.setString(1, paciente.getNome());
+			st.setString(2, paciente.getCpf());
+			st.setObject(3, dataNascimento);
+			st.setString(4, paciente.getGenero());
+			st.setString(5, paciente.getTelefone());
+			st.setString(6, paciente.getEmail());
+			st.setString(7, paciente.getEndereco());
+			
+			
+			st.execute();
+			System.out.println("Cadastro Realizado");
+			
+			st.close();
+			
+			return true;
+			
+		}catch (Exception e) {
+			System.out.println("Falha no cadastro" + e);
+		}
+		
+		return false;
+	}
+
+public static ArrayList<Paciente>getAllPaciente(){
 		
 		Connection conn = Db.conect();
 		
@@ -49,4 +83,8 @@ public static ArrayList<Paciente>getPaciente(){
 		
 		return null;
 	}
+
+
+
+
 }

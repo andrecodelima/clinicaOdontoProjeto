@@ -28,7 +28,7 @@ public class Medico {
 	@Column
 	private LocalDate nascimento;
 	
-	@Column(length = 30)
+	@Column(length = 20)
 	private String genero;
 	
 	@Column(length = 100)
@@ -55,6 +55,21 @@ public class Medico {
 			String especialidade, String telefone, String email, String endereco) {
 		super();
 		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.crm = crm;
+		this.nascimento = nascimento;
+		this.genero = genero;
+		this.especialidade = especialidade;
+		this.telefone = telefone;
+		this.email = email;
+		this.endereco = endereco;
+	}
+
+
+	public Medico(String nome, String cpf, String crm, LocalDate nascimento, String genero, String especialidade,
+			String telefone, String email, String endereco) {
+		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.crm = crm;

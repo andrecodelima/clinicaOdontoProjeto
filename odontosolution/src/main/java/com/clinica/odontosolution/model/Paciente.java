@@ -22,7 +22,7 @@ public class Paciente {
 	@Column(length = 20)
 	private String cpf;
 	
-	@Column(length = 30)
+	@Column(length = 20)
 	private String genero;
 	
 	@Column
@@ -65,6 +65,19 @@ public class Paciente {
 			String endereco) {
 		super();
 		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.genero = genero;
+		this.nascimento = nascimento;
+		this.telefone = telefone;
+		this.email = email;
+		this.endereco = endereco;
+	}
+	
+
+	public Paciente(String nome, String cpf, String genero, LocalDate nascimento, String telefone, String email,
+			String endereco) {
+		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.genero = genero;
