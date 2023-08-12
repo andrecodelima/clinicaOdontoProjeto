@@ -48,6 +48,12 @@ public class Paciente {
 
 	
 	
+	public Paciente() {
+		super();
+	}
+
+
+
 	public Paciente(int id, String nome, String cpf, String genero, String telefone, String email, String endereco) {
 		super();
 		this.id = id;

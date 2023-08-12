@@ -43,7 +43,7 @@ public static boolean insert(Paciente paciente) {
 		return false;
 	}
 
-public static ArrayList<Paciente>getAllPaciente(){
+public static ArrayList<Paciente>getAllPacientes(){
 		
 		Connection conn = Db.conect();
 		

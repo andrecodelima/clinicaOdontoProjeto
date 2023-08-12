@@ -21,8 +21,7 @@ public class Db {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url,usr,pass);
 			
-			System.out.println("Conectado!");
-			
+ 			
 		}catch (Exception e) {
 			System.err.println(e);
 			System.err.println("Falha na Conexão");
