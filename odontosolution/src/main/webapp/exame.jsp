@@ -30,6 +30,9 @@
 		 	String nome 		= e.getNome();
 			LocalDate data		= e.getData();
 		 	int idpaciente		= e.getIdpaciente();
+		 	String nomePacientes	= e.getNomePaciente();
+
+		 	System.out.println(nomePacientes);
 			
 		 	//Condição para verificar se a foreign key é igual ao o id em paciente.
 		 		//Se sim eu consigo recuperar o nome do paciente, por na variavel 'nomepaciente' e exibir 
@@ -45,11 +48,12 @@
 					"<td class='col col-lg-2'>"		+ nome				+ 	"</td>"		+
 					"<td class='col col-lg-1'>"		+ data				+ 	"</td>"		+
 					"<td class='col col-lg-3'>"		+ nomepaciente		+ 	"</td>"		+
+					"<td class='col col-lg-3'>"		+ nomePacientes		+ 	"</td>"		+
 
 		 
 					
-					"<td class='col col-lg-1'><a class='btn btn-warning' href='#"			 + id + "'>Editar</a></td>"  	+
-					"<td class='col col-lg-1'><a class='btn btn-danger'  href='#"			 + id + "'>Excluir</a></td>"  	+
+					"<td class='col col-lg-1'><a class='btn btn-warning' href='edit_exame.jsp?id="		 + id + "'>Editar</a></td>"  	+
+					"<td class='col col-lg-1'><a class='btn btn-danger'  href='deleteExame?id="			 + id + "'>Excluir</a></td>"  	+
 					
 				"</tr>";
 		}
@@ -94,6 +98,7 @@
 
 <!-- Template Main CSS File -->
 <link href="./static/css/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 <!-- =======================================================
     * Template Name: Medilab
@@ -120,7 +125,7 @@
 }
 
 .col {
-	border: 2px solid red;
+	border-right: 2px solid f1f1f199;
 }
 
 form {
@@ -218,6 +223,7 @@ h1 {
 																<th class="col col">Nome</th>
 																<th class="col col">Data</th>
 																<th class="col col">Paciente</th>
+																<th class="col col">Paciente-2</th>
 
 															</tr>
 														</thead>

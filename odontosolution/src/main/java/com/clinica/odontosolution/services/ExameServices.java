@@ -3,14 +3,14 @@ package com.clinica.odontosolution.services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.clinica.odontosolution.model.Exame;
-import com.clinica.odontosolution.model.Paciente;
-import com.clinica.odontosolution.model.Teste;
- 
+
+  
 public class ExameServices {
 
 public static boolean insert(Exame exame) {
@@ -60,7 +60,8 @@ public static ArrayList<Exame>getAllExames(){
 									 result.getInt("id"),
 									 result.getString("nome"),
 									 result.getDate("data").toLocalDate(),
-									 result.getInt("idpaciente")
+									 result.getInt("idpaciente"),
+									 result.getString("nomePaciente")
 
 									 			)
 									);
@@ -78,6 +79,113 @@ public static ArrayList<Exame>getAllExames(){
 		
 		return null;
 	}
- 
+
+public static boolean delExame(int id) {
+	
+	Connection conn = Db.conect();
+	
+	try {
+		
+		String sql = "DELETE from exames WHERE id=?";
+		PreparedStatement st = conn.prepareStatement(sql);
+		
+		st.setInt(1, id);
+		st.execute();
+		
+		System.out.println("Exame deletado");
+		st.close();
+		
+		return true;
+		
+	}catch (Exception e) {
+		
+		System.out.println(e);
+		System.out.println("Falha ao deletar exame");
+	}
+	
+	return false;
+	
+}
+
+public static Exame getId(int id){
+	
+	Connection conn = Db.conect();
+	
+	try {
+		
+		String sql = "SELECT * FROM exames WHERE id=" + id;
+		
+		Statement st = conn.createStatement();
+		ResultSet result = st.executeQuery(sql);
+		
+		Exame exame = new Exame();
+		
+		while(result.next()) {
+			
+			exame = new Exame(result.getInt("id"),
+								 result.getString("nome"),
+								 result.getDate("data").toLocalDate(),
+								 result.getString("nomePaciente")
+								 );
+		}
+		
+		Db.Disconnect(conn);
+		st.close();
+		return exame;
+		
+		
+	}catch (Exception e) {
+		System.out.println(e);
+	}
+	
+	return null;
+}
+
+public static boolean updateExame(Exame e) throws SQLException{
+	Connection conn = Db.conect();
+	LocalDate data = e.getData();
+
+	if(conn == null) {
+		System.err.println("Falha na conexão");
+	
+	}
+	
+	String sql = "UPDATE exames	"						+
+				  
+				 "SET nome			=			?,"		+
+				 "data 				= 			?,"		+
+				 "nomePaciente		=			? "		+
+				 
+				 "WHERE id			=			?"		;
+	
+	try {
+		
+		PreparedStatement st	= conn.prepareStatement(sql);
+		st.setString(1, e.getNome());
+		st.setObject(2, data);
+		st.setString(3, e.getNomePaciente());
+		st.setInt(4, e.getId());
+
+		
+		st.execute();
+		System.out.println("Exame atualizado");
+		Db.Disconnect(conn);
+		
+		return true;
+		
+		
+	}catch (Exception ex) {
+		System.err.println(ex);
+		System.err.println("Erro durante atualização");
+				
+		
+	}
+	
+	Db.Disconnect(conn);
+	return false;
+	
+	}
+
+
 
 }

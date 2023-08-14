@@ -32,14 +32,14 @@
 					"<td class='Dados'>"		+ nome				+ 	"</td>"		+
 					"<td class='Dados'>"		+ cpf				+ 	"</td>"		+
 					"<td class='Dados'>"		+ genero			+ 	"</td>"		+
-					"<td class='Dados'>"		+ nascimento			+ 	"</td>"				+
+					"<td class='Dados'>"		+ nascimento		+	"</td>"		+
 					"<td class='Dados'>"		+ telefone			+ 	"</td>"		+
 					"<td class='Dados'>"		+ email				+ 	"</td>"		+
 
 
 					
-					"<td class='table-link'><a class='btn btn-warning' href='#"			 + id + "'>Editar</a></td>"  	+
-					"<td class='table-link'><a class='btn btn-danger'  href='#"			 + id + "'>Excluir</a></td>"  	+
+					"<td class='table-link'><a class='btn btn-warning' href='edit_paciente.jsp?id="		 + id + "'>Editar</a></td>"  	+
+					"<td class='table-link'><a class='btn btn-danger'  href='deletePaciente?id="		 + id + "'>Excluir</a></td>"  	+
 					
 				"</tr>";
 		}
@@ -84,6 +84,8 @@
 
 <!-- Template Main CSS File -->
 <link href="./static/css/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 
 <!-- =======================================================
     * Template Name: Medilab

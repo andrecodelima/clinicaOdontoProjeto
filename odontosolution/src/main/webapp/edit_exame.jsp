@@ -5,37 +5,25 @@
 <%@page import="com.clinica.odontosolution.services.PacienteServices"%>
 <%@page import="com.clinica.odontosolution.model.Exame"%>
 <%@page import="com.clinica.odontosolution.services.ExameServices"%>
+
 <% 
+	Exame exame = ExameServices.getId(Integer.parseInt(request.getParameter("id")));	 	
+
 	ArrayList<Paciente> lista = PacienteServices.getAllPacientes();
 	ArrayList<Exame> lista_ex = ExameServices.getAllExames();
-
+	
 	String options = "";
 	String nome = "";
 	int idPaciente = 0;
 	int idpk = 0;
 
-
-		for (Paciente p : lista) {
-		    nome 		= p.getNome();
-		    idPaciente	= p.getId(); // id paciente
-			options += "<option value=\"" + nome + "\">" + nome + "</option>";
-		 	System.out.println(nome);
-
-
-		/*  for(Exame e : lista_ex){
-			  idpk = e.getIdpaciente(); // chaveEstrangeira paciente
-			  
-			  if(idpk == idPaciente){
-				  System.out.println(idPaciente + "" + nome);
-				  options += "<option value=\"" + nome + "\">" + nome + "</option>";
-
-			  }
-			}
-		*/
-		  
-		
-		}	
- 
+	for (Paciente p : lista) {
+	    nome 		= p.getNome();
+	    idPaciente	= p.getId(); // id paciente
+		options += "<option value=\"" + nome + "\">" + nome + "</option>";
+	 	System.out.println(nome);
+	}
+	
 %>
 
 <!DOCTYPE html>
@@ -181,14 +169,13 @@ form {
 
 												<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Cadastro de
 													Exames</h3>
-												<form name="formExame" action="insertExame">
+												<form name="formExame" action="updateExame">
 
 													<div class="row">
 														<label>Exame</label>
 														<div class="col-md-8 mb-4 d-flex align-items-center">
-															<select class="select form-control-lg" id="inputNome"
-																name="inputNome">
-																<option value="1" disabled></option>
+															<select class="select form-control-lg" id="inputNome" name="inputNome"  >
+																<option value="<%=exame.getNome()%>"><%=exame.getNome()%>"</option>
 																<option value="Canal">Canal</option>
 																<option value="Obturação">Obturação</option>
 															</select>
@@ -200,8 +187,7 @@ form {
 
 														<div class="col-md-6 mb-4 d-flex align-items-center">
 															<div class="form-outline datepicker w-100">
-																<input type="text" class="form-control form-control-lg"
-																	id="inputData" name="inputData" placeholder="Data">
+																<input type="text" class="form-control form-control-lg" id="inputData" name="inputData" placeholder="Data" value ="<%=exame.getData()%>">
 															</div>
 														</div>
 													</div>
@@ -210,17 +196,19 @@ form {
 														<label>Paciente</label>
 
 														<div class="col-md-8 mb-4 d-flex align-items-center">
-															<select class="select form-control-lg "
-																id="inputPaciente" name="inputPaciente">
+															<select class="select form-control-lg " id="inputPaciente" name="inputPaciente" >
 																<option value="1" disabled>Selecione</option>
-																<%=options %>
-															</select>
+																<%=options%>
+  															</select>
 														</div>
+														
+  													<input type="hidden" name="id" value="<%=exame.getId()%>">
+  														
 													</div>
+													
 
 													<div class="mt-4 pt-2">
-														<input class="btn btn-primary btn-lg" type="submit"
-															value="Cadastrar" />
+														<input class="btn btn-primary btn-lg" type="submit" value="Salvar" onclick="" />
 													</div>
 
 												</form>

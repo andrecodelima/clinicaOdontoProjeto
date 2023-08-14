@@ -1,6 +1,7 @@
 package com.clinica.odontosolution.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,7 @@ import com.clinica.odontosolution.model.Paciente;
 import com.clinica.odontosolution.services.PacienteServices;
 
  
-@WebServlet(urlPatterns = { "/insertPaciente"})
+@WebServlet(urlPatterns = { "/insertPaciente", "/deletePaciente", "/updatePaciente"})
 public class PacienteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,18 +34,18 @@ public class PacienteController extends HttpServlet {
 			break;
 
 			
-//		case "/deleteClient":
-//			delClient(request, response);
-//			break;
-//			
-//		case "/updateClient":
-//			try {
-//				updateClient(request, response);
-//			} catch (ServletException | IOException | SQLException e) {
-//				 
-//				e.printStackTrace();
-//			}
-//			break;	
+		case "/deletePaciente":
+			delPaciente(request, response);
+			break;
+			
+		case "/updatePaciente":
+			try {
+				updatePaciente(request, response);
+			} catch (ServletException | IOException | SQLException e) {
+				 
+				e.printStackTrace();
+			}
+			break;	
 			
 			
 		}
@@ -72,6 +73,42 @@ public class PacienteController extends HttpServlet {
 
 
 }
+	}
+	
+	
+	public void delPaciente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(PacienteServices.delPaciente(Integer.parseInt(request.getParameter("id")))) {
+			response.sendRedirect("responseSucess.jsp?resp=deletar+paciente");
+
+		}else{
+			
+			response.sendRedirect("responseFailed.jsp?resp=deletar+paciente");
+
+		}
+	}
+	
+	public void updatePaciente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		Paciente paciente = new Paciente(
+				 						Integer.parseInt(request.getParameter("id")),
+				 						request.getParameter("inputNome"),
+										request.getParameter("inputCpf"),
+										request.getParameter("inputGenero"),
+										LocalDate.parse(request.getParameter("inputData")),
+										request.getParameter("inputTelefone"),
+										request.getParameter("inputEmail"),
+										request.getParameter("inputEnderco")	
+				 						
+				 					);  
+		
+		 if(PacienteServices.updatePaciente(paciente)) {
+				response.sendRedirect("responseSucess.jsp?resp=editar+paciente");
+		 
+		 }else {
+			 
+				response.sendRedirect("responseFailed.jsp?resp=editar+paciente");
+		 }
+		 
 	}
 
 }

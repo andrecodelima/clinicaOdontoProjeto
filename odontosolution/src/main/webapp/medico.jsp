@@ -48,8 +48,8 @@
 					"</tr>"																	+
 
 					
-					"<td class='table-link'><a class='btn btn-warning' href='#"			 	+ id + "'>Editar</a></td>"  	+
-					"<td class='table-link'><a class='btn btn-danger'  href='#"				+ id + "'>Excluir</a></td>"  	+
+					"<td class='table-link'><a class='btn btn-warning' href='edit_medicos.jsp?id="	+ id + "'>Editar</a></td>"  	+
+					"<td class='table-link'><a class='btn btn-danger'  href='deleteMedico?id="		+ id + "'>Excluir</a></td>"  	+
 					
 					"</tr>";
 		}
@@ -94,6 +94,8 @@
 
 <!-- Template Main CSS File -->
 <link href="./static/css/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 
 <!-- =======================================================
     * Template Name: Medilab

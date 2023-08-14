@@ -1,41 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ page import="java.util.ArrayList"%>
+<%@page import="com.clinica.odontosolution.model.Medico"%>
+<%@page import="com.clinica.odontosolution.services.MedicoServices"%>
 
-<%@page import="com.clinica.odontosolution.model.Paciente"%>
-<%@page import="com.clinica.odontosolution.services.PacienteServices"%>
-<%@page import="com.clinica.odontosolution.model.Exame"%>
-<%@page import="com.clinica.odontosolution.services.ExameServices"%>
-<% 
-	ArrayList<Paciente> lista = PacienteServices.getAllPacientes();
-	ArrayList<Exame> lista_ex = ExameServices.getAllExames();
+<%
+	Medico medico = MedicoServices.getId(Integer.parseInt(request.getParameter("id")));	
 
-	String options = "";
-	String nome = "";
-	int idPaciente = 0;
-	int idpk = 0;
-
-
-		for (Paciente p : lista) {
-		    nome 		= p.getNome();
-		    idPaciente	= p.getId(); // id paciente
-			options += "<option value=\"" + nome + "\">" + nome + "</option>";
-		 	System.out.println(nome);
-
-
-		/*  for(Exame e : lista_ex){
-			  idpk = e.getIdpaciente(); // chaveEstrangeira paciente
-			  
-			  if(idpk == idPaciente){
-				  System.out.println(idPaciente + "" + nome);
-				  options += "<option value=\"" + nome + "\">" + nome + "</option>";
-
-			  }
-			}
-		*/
-		  
-		
-		}	
- 
 %>
 
 <!DOCTYPE html>
@@ -76,7 +45,6 @@
 
 <!-- Template Main CSS File -->
 <link href="./static/css/style.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 <!-- =======================================================
     * Template Name: Medilab
@@ -179,42 +147,89 @@ form {
 											style="border-radius: 15px;">
 											<div class="card-body p-4 p-md-5">
 
-												<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Cadastro de
-													Exames</h3>
-												<form name="formExame" action="insertExame">
+												<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Cadastro de Médicos</h3>
+												<form name="formPaciente" action="updateMedico">
 
 													<div class="row">
-														<label>Exame</label>
-														<div class="col-md-8 mb-4 d-flex align-items-center">
-															<select class="select form-control-lg" id="inputNome"
-																name="inputNome">
-																<option value="1" disabled></option>
-																<option value="Canal">Canal</option>
-																<option value="Obturação">Obturação</option>
-															</select>
-														</div>
-													</div>
-
-													<div class="row">
-														<label>Data</label>
-
-														<div class="col-md-6 mb-4 d-flex align-items-center">
-															<div class="form-outline datepicker w-100">
+														<div class="col-md-12 mb-4">
+															<div class="form-outline">
 																<input type="text" class="form-control form-control-lg"
-																	id="inputData" name="inputData" placeholder="Data">
+																	id="inputNome" name="inputNome" maxlength="45"
+																	placeholder="Nome Completo"  value = "<%=medico.getNome()%>">
 															</div>
 														</div>
 													</div>
 
 													<div class="row">
-														<label>Paciente</label>
+														<div class="col-md-6 mb-4 d-flex align-items-center">
+															<div class="form-outline datepicker w-100">
+																<input type="text" class="form-control form-control-lg"
+																	id="inputCpf" name="inputCpf" maxlength="45"
+																	placeholder="CPF"  value = "<%=medico.getCpf()%>">
+															</div>
+														</div>
 
-														<div class="col-md-8 mb-4 d-flex align-items-center">
-															<select class="select form-control-lg "
-																id="inputPaciente" name="inputPaciente">
-																<option value="1" disabled>Selecione</option>
-																<%=options %>
+														<div class="col-md-6 mb-4 d-flex align-items-center">
+															<div class="form-outline datepicker w-100">
+																<input type="text" class="form-control form-control-lg"
+																	id="inputCrm" name="inputCrm" maxlength="45"
+																	placeholder="CRM" value = "<%=medico.getCrm()%>">
+															</div>
+														</div>
+													</div>
+
+
+
+													<div class="row">
+														<div class="col-md-6 mb-4 d-flex align-items-center">
+															<div class="form-outline datepicker w-100">
+																<input type="text" class="form-control form-control-lg"
+																	id="inputData" name="inputData"
+																	placeholder="Nascimento" value = "<%=medico.getNascimento()%>">
+															</div>
+														</div>
+
+														<div class="col-md-6">
+															<select class="select form-control-lg" id="inputGenero"
+																name="inputGenero">
+																<option value="<%=medico.getGenero()%>"><%=medico.getGenero()%>"</option>
+																<option value="masculino">Masculino</option>
+																<option value="feminino">Feminino</option>
 															</select>
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-6">
+															<select class="select form-control-lg"
+																id="inputEspecialidade" name="inputEspecialidade">
+																<option value="<%=medico.getEspecialidade()%>"><%=medico.getEspecialidade()%>"</option>
+																<option value="Odonto">Odonto</option>
+																<option value="Odonto">Protetico</option>
+															</select>
+														</div>
+														<div class="col-md-6 mb-4 pb-2">
+															<div class="form-outline">
+																<input type="tel" class="form-control form-control-lg"
+																	id="inputTelefone" name="inputTelefone"
+																	placeholder="Telefone" value = "<%=medico.getTelefone()%>">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12 mb-4 pb-2">
+															<div class="form-outline">
+																<input type="email" class="form-control form-control-lg"
+																	id="inputEmail" name="inputEmail" placeholder="E-mail" value = "<%=medico.getEmail()%>">
+															</div>
+														</div>
+
+														<div class="col-md-12 mb-4 pb-2">
+															<div class="form-outline">
+																<input type="text" class="form-control form-control-lg"
+																	id="inputEndereco" name="inputEndereco"
+																	placeholder="Endereço" value = "<%=medico.getEndereco()%>">
+															</div>
 														</div>
 													</div>
 
@@ -235,16 +250,10 @@ form {
 				</div>
 			</div>
 
-
-
-
-
 		</section>
 		<!-- End Doctors Section -->
 
 	</main>
-
-
 
 	<!-- ======= Footer ======= -->
 	<footer id="footer">

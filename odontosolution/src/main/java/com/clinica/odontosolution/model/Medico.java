@@ -43,6 +43,13 @@ public class Medico {
 	@Column(length = 200)
 	private String endereco;
 	
+	
+	
+	public Medico() {
+		super();
+	}
+
+
 	public Medico(int id, String nome, String cpf) {
 		super();
 		this.id = id;

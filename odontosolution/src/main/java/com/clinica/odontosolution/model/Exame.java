@@ -41,18 +41,10 @@ public class Exame {
 	
 //	private int idPaciente = paciente.getId();
 	
- 
 
-	public Exame(int id, String nome, LocalDate data, int idpaciente, String nomePaciente) {
+	public Exame() {
 		super();
-		this.id = id;
-		this.nome = nome;
-		this.data = data;
-		this.nomePaciente = nomePaciente;
-
 	}
-
-	
 
 	public Exame(String nome, LocalDate data, String nomePaciente) {
 		super();
@@ -71,6 +63,27 @@ public class Exame {
 		this.idpaciente = idpaciente;
 	}
 
+
+	
+
+	public Exame(int id, String nome, LocalDate data, String nomePaciente) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.data = data;
+		this.nomePaciente = nomePaciente;
+	}
+
+
+
+	public Exame(int id, String nome, LocalDate data, int idpaciente, String nomePaciente) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.data = data;
+		this.idpaciente = idpaciente;
+		this.nomePaciente = nomePaciente;
+	}
 
 
 	public String getNomePaciente() {
