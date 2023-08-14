@@ -55,21 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 	animation: animate-preloader 1s linear infinite;
 }
 
-@
-keyframes animate-preloader { 0% {
-	transform: rotate(0deg);
-}
-
-100
-%
-{
-transform
-:
-rotate(
-360deg
-);
-}
-}
+ 
 
 /*
 # TESTE
@@ -892,29 +878,7 @@ section {
 	animation: none;
 	border-radius: 0;
 }
-
-@
-keyframes pulsate-btn { 0% {
-	transform: scale(0.6, 0.6);
-	opacity: 1;
-}
-
-100
-%
-{
-transform
-:
-scale(
-1
-,
-1
-);
-opacity
-:
-0;
-}
-}
-
+ 
 /*--------------------------------------------------------------
 # Counts
 --------------------------------------------------------------*/
@@ -1619,21 +1583,7 @@ opacity
 	background: #1c84e3;
 }
 
-@
-keyframes animate-loading { 0% {
-	transform: rotate(0deg);
-}
-
-100
-%
-{
-transform
-:
-rotate(
-360deg
-);
-}
-}
+ 
 
 /*--------------------------------------------------------------
 # Footer

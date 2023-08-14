@@ -3,18 +3,38 @@
 
 <%@page import="com.clinica.odontosolution.model.Paciente"%>
 <%@page import="com.clinica.odontosolution.services.PacienteServices"%>
-
+<%@page import="com.clinica.odontosolution.model.Exame"%>
+<%@page import="com.clinica.odontosolution.services.ExameServices"%>
 <% 
 	ArrayList<Paciente> lista = PacienteServices.getAllPacientes();
+	ArrayList<Exame> lista_ex = ExameServices.getAllExames();
+
+	String options = "";
+	String nome = "";
+	int idPaciente = 0;
+	int idpk = 0;
+
+
+		for (Paciente p : lista) {
+		    nome 		= p.getNome();
+		    idPaciente	= p.getId(); // id paciente
+
+		  for(Exame e : lista_ex){
+			  idpk = e.getIdpaciente(); // chaveEstrangeira paciente
+			  
+			  if(idpk == idPaciente){
+				  System.out.println(idPaciente + "" + nome);
+				  options += "<option value=\"" + nome + "\">" + nome + "</option>";
+
+			  }
+			}
+		
+		  
+		
+		}
 	
-	for(Paciente p : lista){
-		
-		String nome = p.getNome();
-		
-		System.out.print(nome);
-		
-	}
-	 
+ 
+
 
 %>
 <!DOCTYPE html>
@@ -159,16 +179,16 @@ form {
 
 												<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Cadastro de
 													Exames</h3>
-												<form name="formPaciente" action="insertPaciente">
+												<form name="formExame" action="insertExame">
 
 													<div class="row">
 														<label>Exame</label>
 														<div class="col-md-8 mb-4 d-flex align-items-center">
-															<select class="select form-control-lg" id="inputPaciente"
-																name="inputPaciente">
+															<select class="select form-control-lg" id="inputNome"
+																name="inputNome">
 																<option value="1" disabled></option>
-																<option value="masculino">Canal</option>
-																<option value="feminino">ObturaÃ§Ã£o</option>
+																<option value="Canal">Canal</option>
+																<option value="Obturação">Obturação</option>
 															</select>
 														</div>
 													</div>
@@ -190,7 +210,8 @@ form {
 														<div class="col-md-8 mb-4 d-flex align-items-center">
 															<select class="select form-control-lg "
 																id="inputPaciente" name="inputPaciente">
-																<option value="1" disabled></option>
+																<option value="1" disabled>Selecione</option>
+																<%=options %>
 															</select>
 														</div>
 													</div>

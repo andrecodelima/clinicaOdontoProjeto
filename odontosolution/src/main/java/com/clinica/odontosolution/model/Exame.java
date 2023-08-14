@@ -35,21 +35,30 @@ public class Exame {
 	@JoinColumn(name = "idpaciente")
 	private int idpaciente;	
 
+	@Column(length = 100)
+	private String nomePaciente;
+	
 	
 //	private int idPaciente = paciente.getId();
 	
-	public Exame(String nome, LocalDate data, int idPaciente) {
-		super();
-		this.nome = nome;
-		this.data = data;
- 	}
+ 
 
-
-	public Exame(int id, String nome, LocalDate data) {
+	public Exame(int id, String nome, LocalDate data, int idpaciente, String nomePaciente) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.data = data;
+		this.nomePaciente = nomePaciente;
+
+	}
+
+	
+
+	public Exame(String nome, LocalDate data, String nomePaciente) {
+		super();
+		this.nome = nome;
+		this.data = data;
+		this.nomePaciente = nomePaciente;
 	}
 
 
@@ -60,6 +69,17 @@ public class Exame {
 		this.nome = nome;
 		this.data = data;
 		this.idpaciente = idpaciente;
+	}
+
+
+
+	public String getNomePaciente() {
+		return nomePaciente;
+	}
+
+
+	public void setNomePaciente(String nomePaciente) {
+		this.nomePaciente = nomePaciente;
 	}
 
 
