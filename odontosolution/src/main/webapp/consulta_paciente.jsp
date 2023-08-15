@@ -1,52 +1,53 @@
-<%@page import="com.clinica.odontosolution.services.PacienteServices"%>
 <%@page import="java.text.DateFormat"%>
 <%@ page import="java.time.LocalDate"%>
 
 <%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
-
 <%@page import="com.clinica.odontosolution.model.Paciente"%>
-<%@page import="com.clinica.odontosolution.model.Exame"%>
-<%@page import="com.clinica.odontosolution.services.ExameServices"%>
+<%@page import="com.clinica.odontosolution.services.PacienteServices"%>
 <%
-	ArrayList<Exame> lista = ExameServices.getAllExames();
-	ArrayList<Paciente> listaPaciente = PacienteServices.getAllPacientes();
+	ArrayList<Paciente> lista = PacienteServices.getAllPacientes(); 
+	String nomes = request.getParameter("name");
 
+	if(nomes == (null) || nomes.equals("")){
+		lista = PacienteServices.getAllPacientes();
+	}else{
+		lista = PacienteServices.getPacienteByname(nomes);
+	}
+	
 	String line = "";
-	Paciente paciente = new Paciente();
-	String nomepaciente = "";
 	
 	if(lista.isEmpty()){
-		line = "<tr><th colspan='3'> Não há exames cadastrados </tr></th>";
+		line = "<tr><th colspan='3'> Não há pacientes cadastrados </tr></th>";
 		
 	}else{
 		
-		for(Exame e : lista){
+		for(Paciente p : lista){
 			
-		 	int id 				= e.getId();
-		 	String nome 		= e.getNome();
-			LocalDate data		= e.getData();
-		 	int idpaciente		= e.getIdpaciente();
+			int id						= p.getId();
+			String nome					= p.getNome();
+			String cpf					= p.getCpf();
+			String genero 				= p.getGenero();
+			LocalDate nascimento		= p.getNascimento();
+			String telefone 			= p.getTelefone();
+			String email 				= p.getEmail();
 			
- 			for(Paciente p : listaPaciente){
- 				if(idpaciente == p.getId()){
- 					System.out.println(p.getNome());
- 				} 
- 			}			 
-		 	
-		
-			line +=	"<tr>"						+ 
+			
+			line +=	"<tr>"						+
 					
-					"<td class='col col-lg-1'>"		+ id				+	"</td>"		+
-					"<td class='col col-lg-2'>"		+ nome				+ 	"</td>"		+
-					"<td class='col col-lg-1'>"		+ data				+ 	"</td>"		+
-					"<td class='col col-lg-2'>"		+ idpaciente		+ 	"</td>"		+
+					"<td class='Dados'>"		+ id				+	"</td>"		+
+					"<td class='Dados'>"		+ nome				+ 	"</td>"		+
+					"<td class='Dados'>"		+ cpf				+ 	"</td>"		+
+					"<td class='Dados'>"		+ genero			+ 	"</td>"		+
+					"<td class='Dados'>"		+ nascimento		+	"</td>"		+
+					"<td class='Dados'>"		+ telefone			+ 	"</td>"		+
+					"<td class='Dados'>"		+ email				+ 	"</td>"		+
 
-		 
+
 					
-					"<td class='col col-lg-1'><a class='btn btn-warning' href='#"			 + id + "'>Editar</a></td>"  	+
-					"<td class='col col-lg-1'><a class='btn btn-danger'  href='#"			 + id + "'>Excluir</a></td>"  	+
+					"<td class='table-link'><a class='btn btn-warning' href='edit_paciente.jsp?id="		 + id + "'>Editar</a></td>"  	+
+					"<td class='table-link'><a class='btn btn-danger'  href='deletePaciente?id="		 + id + "'>Excluir</a></td>"  	+
 					
 				"</tr>";
 		}
@@ -59,7 +60,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Exames</title>
+<title>Paciente</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -91,6 +92,8 @@
 
 <!-- Template Main CSS File -->
 <link href="./static/css/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 
 <!-- =======================================================
     * Template Name: Medilab
@@ -116,8 +119,9 @@
 	margin-left: -282px;
 }
 
-.col {
-	border: 2px solid red;
+.col-md-6 {
+	/* border: 2px solid red; */
+	
 }
 
 form {
@@ -171,8 +175,7 @@ h1 {
 					<li><a class="nav-link scrollto" href="sobre">Sobre</a></li>
 					<li><a class="nav-link scrollto" href="especialidade">Especialidades</a></li>
 					<li><a class="nav-link scrollto" href="dentista">Dentistas</a></li>
-					<li><a class="nav-link scrollto" href="contato">Contato</a></li>
-
+ 
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav>
@@ -190,12 +193,7 @@ h1 {
 			<div class="container">
 				<div class="section-title">
 					<div class="section-title">
-						<h2>Doctors</h2>
-						<p>Magnam dolores commodi suscipit. Necessitatibus eius
-							consequatur ex aliquid fuga eum quidem. Sit sint consectetur
-							velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-							suscipit alias ea. Quia fugiat sit in iste officiis commodi
-							quidem hic quas.</p>
+ 					
 					</div>
 
 					<!-- CADASTRO -->
@@ -208,24 +206,35 @@ h1 {
 											style="border-radius: 15px;">
 											<div class="card-body p-4 p-md-5">
 
-												<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Exames</h3>
-
 												<section class="box-produtos">
 
-													<h1>Lista de Exames</h1>
+													<h1>Lista de Pacientes</h1>
 													<hr>
 
-													<a href="cadastroProduto.html" class="btn btn-outline-info"
-														title="Cadastrar novo produto">Novo</a>
+													<form action="consulta_paciente.jsp">
+														<div class="input-group mb-3">
+												  			<input type="text" class="form-control" name="name" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2">
+												 			 <button class="btn btn-primary" id="button-addon2">
+												 			 	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+																  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+																</svg>
+												 			 </button>
+													 	</div>
+												    </form>
 
 													<table class="table-produtos" id="tabelaProduto">
 
 														<thead>
 															<tr>
-																<th class="col col-lg-1">id</th>
-																<th class="col col-sm">Nome</th>
-																<th class="col col-sm">Data</th>
-																<th class="col col-sm">Paciente</th>
+																<th class="col-id">id</th>
+																<th class="col-nome">Nome</th>
+																<th class="col-cpf">CPF</th>
+																<th class="col-genero">Gênero</th>
+																<th class="col-nascimento">Nascimento</th>
+																<th class="col-telefone">Telefone</th>
+																<th class="col-email">E-mail</th>
+																<th class="col-endereço">Endereço</th>
+
 
 															</tr>
 														</thead>

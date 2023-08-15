@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(urlPatterns = { "/acesso","/home", "/sobre", "/contato",  "/dentistas", "/especialidades", "/cadastroUsuario", "/listaExame", "/listaMedicos", "/listaPacientes" })
+@WebServlet(urlPatterns = { "/acesso","/home", "/sobre", "/dentistas", "/especialidades", "/cadastroUsuario", "/listaExame", "/listaMedicos", 
+		"/listaPacientes", "/consultaPacientes"})
+
 public class PageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,10 +30,6 @@ public class PageController extends HttpServlet {
 		
 		case "/acesso":
 			Acesso(request, response);
-			break;
-			
-		case "/contato":
-			Contato(request, response);
 			break;
 			
 		case "/cadastroUsuario":
@@ -69,6 +67,11 @@ public class PageController extends HttpServlet {
 		case "/listaPacientes":
 			PacientesList(request, response);
 			break;
+			
+		case "/consultaPacientes":
+			PacientesList(request, response);
+			break;
+	 	
 	 	
 			
 		}
@@ -80,11 +83,6 @@ public class PageController extends HttpServlet {
  		 
 	}
     
-	
-    public void Contato(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  response.sendRedirect("p_contato.html");
- 		 
-	}
     
     public void CadastroUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  response.sendRedirect("p_cadastro_user.html");
@@ -123,9 +121,12 @@ public class PageController extends HttpServlet {
 	}
     
     public void PacientesList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  response.sendRedirect("paciente.jsp");
+		  response.sendRedirect("consulta_paciente.jsp");
 		 
 	}
+    
+   
+
 
 
 

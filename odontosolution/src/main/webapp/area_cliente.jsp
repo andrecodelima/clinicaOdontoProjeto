@@ -64,6 +64,7 @@
           <li><a class="nav-link scrollto" href="listaExame">Lista de Exames</a></li>
           <li><a class="nav-link scrollto" href="listaMedicos">Lista de Médicos</a></li>
           <li><a class="nav-link scrollto" href="listaPacientes">Lista de Pacientes</a></li>
+          <li><a class="nav-link scrollto" href="consultaPacientes">Consulta de Pacientes</a></li>
           
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

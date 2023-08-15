@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import com.clinica.odontosolution.model.Exame;
 import com.clinica.odontosolution.model.Paciente;
 
+ 
+
 public class PacienteServices {
 
 public static boolean insert(Paciente paciente) {
@@ -203,6 +205,44 @@ public static boolean updatePaciente(Paciente p) throws SQLException{
 	return false;
 	
 	}
+
+public static ArrayList<Paciente> getPacienteByname(String nome){
+	
+	Connection conn = Db.conect();
+	
+	try {
+		
+		String sql = "SELECT * FROM pacientes WHERE nome LIKE '%" + nome + "%'";
+		
+		Statement st = conn.createStatement();
+		ResultSet result = st.executeQuery(sql);
+		
+		ArrayList<Paciente>lista = new ArrayList<Paciente>();
+		
+		while(result.next()) {
+			lista.add(new Paciente(result.getInt("id"),
+									result.getString("nome"),
+									 result.getString("cpf"),
+									 result.getString("genero"),
+									 result.getDate("nascimento").toLocalDate(),
+									 result.getString("telefone"),
+									 result.getString("email"),
+									 result.getString("endereco")
+						)
+					);
+		}
+		
+		Db.Disconnect(conn);
+		st.close();
+		return lista;
+		
+		}catch (Exception e) {
+			System.out.println("Erro ao consultar nome " + e);
+		}
+		
+		return null;
+	}
+
 
 
 }

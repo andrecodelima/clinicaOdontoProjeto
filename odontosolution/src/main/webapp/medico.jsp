@@ -195,14 +195,7 @@ h1 {
 		<section id="doctors" class="doctors">
 			<div class="container">
 				<div class="section-title">
-					<div class="section-title">
-						<h2>Doctors</h2>
-						<p>Magnam dolores commodi suscipit. Necessitatibus eius
-							consequatur ex aliquid fuga eum quidem. Sit sint consectetur
-							velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-							suscipit alias ea. Quia fugiat sit in iste officiis commodi
-							quidem hic quas.</p>
-					</div>
+			 
 
 					<!-- CADASTRO -->
 					<div class='box_cadast'>
@@ -214,15 +207,13 @@ h1 {
 											style="border-radius: 15px;">
 											<div class="card-body p-4 p-md-5">
 
-												<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Médicos</h3>
-
 												<section class="box-produtos">
 
 													<h1>Lista de Médicos</h1>
 													<hr>
 
-													<a href="cadastroProduto.html" class="btn btn-outline-info"
-														title="Cadastrar novo produto">Novo</a>
+													<a href="cadastro_medicos.html" class="btn btn-secondary"
+														title="Cadastrar novo médico">Novo</a>
 
 													<table class="table-produtos" id="tabelaProduto">
 

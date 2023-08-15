@@ -58,8 +58,7 @@
           <li><a class="nav-link scrollto" href="especialidades">Especialidades</a></li>
           <li><a class="nav-link scrollto" href="dentistas">Dentistas</a></li>
           
-          <li><a class="nav-link scrollto" href="contato">Contato</a></li>
-        </ul>
+         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
@@ -70,7 +69,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
-      <h1>Seja bem vindo a Odonto Solutions</h1>
+      <h1>Seja bem vindo a <br>
+      Odonto Solutions</h1>
       <h2>Agende aqui a sua consulta com os melhores especialistas!</h2>
       <a href="#about" class="btn-get-started scrollto">Agende aqui</a>
     </div>
