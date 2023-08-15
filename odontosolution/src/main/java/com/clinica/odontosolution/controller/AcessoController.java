@@ -66,13 +66,16 @@ public class AcessoController extends HttpServlet {
 			if ((usr.getUsuario().equals(usuario)) && (usr.getPassword().equals(password))) {
 				response.sendRedirect("area_cliente.jsp");
 
-			}else if ((usuario != usr.getUsuario()) || (password != usr.getPassword())) {
-				response.sendRedirect("responseFailed.jsp?resp=acessar+sistema. Usuario+ou+senha+invalido.");
-			// Tratar erro de usuario null
+			}else if ((usuario != usr.getUsuario()) && (password != usr.getPassword())) {
+				response.sendRedirect(request.getContextPath() + "/errors/responseFailed.jsp?resp=Usuario+ou+senha+invalido."); 
+				//Caminho absoluto aplicado através do getContextPath permitindo que a pagina seja acessada independente de onde estiver
+
+			}
+			
 
 			}
 
 		}
 		
 	}
-}
+

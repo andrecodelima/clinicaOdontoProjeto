@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Instant Input Validation Example</title>
+	<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../css/validation.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/cyborg/bootstrap.min.css">
+</head>
+
+<body><div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="https://www.jqueryscript.net/form/instant-input-validation.html">Download This Plugin</a></li>
+<li><a href="https://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul><div id="carbon-block"></div>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+	<div class="container" style="margin:150px auto">
+		<h1>Instant Input Validation Example</h1>
+		<div class="row">
+			<div class="col-12 mt-5">
+				<form id="validate">
+					<div class="form-group row">
+						<label for="email" class="col-4 col-form-label">Email</label>
+						<div class="col-8">
+                            <input id="email" name="email" type="text" class="form-control validate"
+                            data-validate-type="email">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="url" class="col-4 col-form-label">URL</label>
+						<div class="col-8">
+                            <input id="url" name="url" type="text" class="form-control validate"
+                            data-validate-type="url">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="least_chars" class="col-4 col-form-label">At least 10 chars</label>
+						<div class="col-8">
+                            <input id="least_chars" name="least_chars" type="text" class="form-control validate"
+                            data-validate-type="minlength" data-constraint="10">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="most_chars" class="col-4 col-form-label">At most 5 chars</label>
+						<div class="col-8">
+                            <input id="most_chars" name="most_chars" type="text" class="form-control validate"
+                            data-validate-type="maxlength" data-constraint="5">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="not_empty" class="col-4 col-form-label">Not empty string</label>
+						<div class="col-8">
+                            <input id="notempty_string" name="notempty_string" type="text" class="form-control validate"
+                            data-validate-type="notempty">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="notempty_integer" class="col-4 col-form-label">Not empty string or integer</label>
+						<div class="col-8">
+                            <input id="notempty_integer" name="notempty_integer" type="text" class="form-control validate"
+                            data-validate-type="notempty_integer">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="gt_zero" class="col-4 col-form-label">Integer greater than zero</label>
+						<div class="col-8">
+                            <input id="gt_zero" name="gt_zero" type="text" class="form-control validate"
+                            data-validate-type="gtzero">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="date" class="col-4 col-form-label">Date</label>
+						<div class="col-8">
+							<input id="date" name="date" placeholder="yyyy-mm-dd or mm/dd/yyyy, can be with “-” or “/”"
+                                type="text" class="form-control validate"
+                                data-validate-type='["date", "notempty"]'>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="phone" class="col-4 col-form-label">US Phone Number</label>
+						<div class="col-8">
+							<input id="phone" name="phone" placeholder="123-456-7890 or 123.456.7890 or (123)-456-7890"
+                                type="text" class="form-control validate"
+                                data-validate-type="phoneUS">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="postalcodeBR" class="col-4 col-form-label">Postal code BR</label>
+						<div class="col-8">
+							<input id="phone" name="phone" placeholder="00000-000"
+                                type="text" class="form-control validate"
+                                data-validate-type="postalcodeBR">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-4 col-8">
+							<button name="submit" type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+	<script src="../dist/jquery.input-validation.min.js"></script>
+	<script src="../dist/additional-types.js"></script>
+
+	<script>
+		$("#validate").inputValidation();
+	</script>
+</body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</html>

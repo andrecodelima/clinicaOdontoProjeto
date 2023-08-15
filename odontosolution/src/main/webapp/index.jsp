@@ -26,6 +26,12 @@
         <!-- Template Main CSS File -->
         <link href="static/css/style.css" rel="stylesheet">
          
+        <style type="text/css">
+        	.span{
+        		color:#d61e1e;
+        	}
+        </style>
+        
       </head>
 <body>
     <!--Top Bar-->
@@ -70,7 +76,7 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
       <h1>Seja bem vindo a <br>
-      Odonto Solutions</h1>
+      OdontoSolutions<span class="span">.</span></h1>
       <h2>Agende aqui a sua consulta com os melhores especialistas!</h2>
       <a href="#about" class="btn-get-started scrollto">Agende aqui</a>
     </div>

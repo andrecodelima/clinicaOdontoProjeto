@@ -1,10 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+    
+<% String resp = request.getParameter("resp"); %>
+    
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
       
-        <title>Login</title>
+        <title>odontoSolutions</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
       
@@ -23,16 +27,22 @@
         <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
         <link href="static/vendor/remixicon/remixicon.css" rel="stylesheet">
         <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <!-- Template Main CSS File -->
-        <link href="static/css/style.css" rel="stylesheet">
+        <link href="../static/css/style.css" rel="stylesheet">
+        
+        <!-- BS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="./static/js/js.js"></script>
-       </head>
+       
+       <style type="text/css">
+       		#hero{ 
+       			background-color: red;
+        		}
+       </style>
+      </head> 
+      
+      
 <body>
-    <!--Top Bar-->
-    <div id="topbar" class="d-flex align-items-center fixed-top">
+<div id="topbar" class="d-flex align-items-center fixed-top">
         <div class="container d-flex justify-content-between">
           <div class="contact-info d-flex align-items-center">
             <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">odontosolutions.com.br</a>
@@ -45,69 +55,42 @@
             <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
           </div>
         </div>
-      </div>
-      <!-- ======= Header ======= -->
+      </div>		
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
       <h1 class="logo me-auto"><a href="home">odonto Solutions</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="static/img/logo.png" alt="" class="img-fluid"></a>-->
+       
 
       <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="home">Home</a></li>
-          <li><a class="nav-link scrollto" href="sobre">Sobre</a></li>
-          <li><a class="nav-link scrollto" href="especialidades">Especialidades</a></li>
-          <li><a class="nav-link scrollto" href="dentistas">Dentistas</a></li>
-          
-        </ul>
+
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="acesso" class="appointment-btn scrollto"><span class="d-none d-md-inline">Marque uma</span> Consulta</a>
-
+ 
     </div>
   </header><!-- End Header -->
-   <section id="hero" class="d-flex align-items-center">
+   <section >
     <div class="container">
-    <h1>Login</h1>
-    <hr>
-     <form class="row g-3" name="formLogin" action=logar>
-		  <div class="col-md-4">
-		    <label for="inputEmail4" class="form-label">Usuário</label>
-		    <input type="text" class="form-control" id="inputUser" name="inputUsuario">
-		  </div>
-		  <div class="col-md-4">
-		    <label for="inputPassword4" class="form-label">Senha</label>
-		    <input type="password" class="form-control" id="inputPass" name="inputPassword">
-		  </div> 
+    	<section>
+    	
+    			Falha ao <%=resp%><br>
+    		 	<div class="spinner-border" role="status">
+  					<span class="visually-hidden">Loading...</span>
+				</div>
+				
+    		 		
+     	</section>
+ 				
+     </div>
+  </section>
   
-	  <div class="col-12">
-	    <div class="form-check">
-	      <input class="form-check-input" type="checkbox" id="gridCheck">
-	      <label class="form-check-label" for="gridCheck">
-	        Check me out
-	      </label>
-	    </div>
-	  </div>
-	  
-	  <div class="col-1">
-	    <button type="button" class="btn btn-primary" onclick="loginValid()">Login</button>
-	  </div>
-	  <div class="col-2">
-	    <button type="button" class="btn btn-secondary" onclick="acessoUser()">Cadastre-se</button>
-	  </div>
-	  
-	</form>
-    </div>
-  </section> 
-  <section id="why-us" class="why-us">
-    <div class="container">
+ 			 
+			
+ 
+ 
 
-       
 
-    </div>
-  </section><!-- End Why Us Section -->
+ 	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
