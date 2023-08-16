@@ -62,7 +62,10 @@ public class AcessoController extends HttpServlet {
 
 		Acesso usr = AcessoServices.getUsuario(usuario);
 
-		if (usr != null) {
+		if (usr.getUsuario() == null || usr.getPassword() == null) {
+			response.sendRedirect(request.getContextPath() + "/errors/responseFailed.jsp?resp=Usuario+ou+senha+invalido."); 
+			
+		}else {
 			if ((usr.getUsuario().equals(usuario)) && (usr.getPassword().equals(password))) {
 				response.sendRedirect("area_cliente.jsp");
 
@@ -72,10 +75,15 @@ public class AcessoController extends HttpServlet {
 
 			}
 			
-
-			}
-
 		}
-		
+			
+
 	}
+
+}
+			
+
+	
+		
+	
 

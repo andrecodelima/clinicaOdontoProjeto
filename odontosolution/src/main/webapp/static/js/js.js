@@ -21,3 +21,10 @@ function loginValid(){
 	
 	 
 }
+
+function retornarPaginaLogar(){
+	setTimeout(() =>{
+		
+        window.location.href="../p_acesso.html";
+    }, 3000);
+}
