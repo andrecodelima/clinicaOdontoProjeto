@@ -78,6 +78,8 @@
 <link href="./static/css/style.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
+ <!-- Style - jquery -->
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <!-- =======================================================
     * Template Name: Medilab
     * Updated: Jul 27 2023 with Bootstrap v5.3.1
@@ -96,7 +98,6 @@
 	flex: 1 1 auto;
 	padding: var(- -bs-card-spacer-y) var(- -bs-card-spacer-x);
 	color: var(- -bs-card-color);
-	background-color: #618cbf;
 	margin-top: -105px;
 }
 
@@ -182,8 +183,7 @@ form {
 													<div class="row">
 														<label>Exame</label>
 														<div class="col-md-8 mb-4 d-flex align-items-center">
-															<select class="select form-control-lg" id="inputNome"
-																name="inputNome">
+															<select class="select form-control-lg" id="inputNome" name="inputNome">
 																<option value="1" disabled></option>
 																<option value="Canal">Canal</option>
 																<option value="Obturação">Obturação</option>
@@ -326,13 +326,30 @@ form {
 			</div>
 		</div>
 	</footer>
+	
 	<!-- End Footer -->
+	
 	<!-- SCRIPTS -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-		crossorigin="anonymous"></script>
+		<!-- BS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	
+		<!-- JS Local -->
 	<script src="./static/js/js.js"></script>
+	<script src="./static/js/jquery.js"></script>
+	<script src="./static/js/script.js"></script>
+	<script src="./static/js/jquery.maskedinput.min.js"></script> 
+	
+	<!-- Jquery UI - Componentes para UI -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+	
+	<script>
+		// Calendar
+		$("#inputData").datepicker({
+    	dateFormat: "dd/mm/yy"
+     	});
+		
+	</script>
 
 </body>
 </html>
